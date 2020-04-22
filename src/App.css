@@ -2,8 +2,8 @@
 
 /* Global Styles */
 :root {
-  --primary-color: #dc3545;
-  --dark-color: #333333;
+  --primary-color: linear-gradient(135deg, #0A1131 0%, #008DDF 100%);
+  --dark-color: #0A1131;
   --light-color: #f4f4f4;
   --danger-color: #dc3545;
   --success-color: #28a745;

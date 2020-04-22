@@ -1,4 +1,4 @@
-import React, {useState, Fragment} from 'react';
+import React, { Fragment } from 'react';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import NavBar from './components/layouts/NavBar';
 import Users from './components/Users/Users';
@@ -7,31 +7,22 @@ import Search from './components/Users/Search';
 import Alert from './components/layouts/Alert';
 import About from './components/pages/About';
 import GithubState from './context/github/GithubState';
+import AlertState from './context/alert/AlertState';
 import './App.css';
 
 const App = () => {
-  const [alert, setAlert] = useState(null);
-
-  const showAlert = (msg, type) => {
-    setAlert({msg:msg, type: type})
-    setTimeout(() => {
-      setAlert(null)
-    }, 5000);
-  }
-
     return (
       <GithubState>
+        <AlertState>
         <Router>
         <div className="App">
             <NavBar title='Github Finder' icon='fa fa-github'/>
             <div className='container'>
-                <Alert alert={alert} />
+                <Alert />
                 <Switch>
                   <Route exact path='/' render={ props => (
                     <Fragment>
-                      <Search 
-                        setAlert={showAlert}
-                        />
+                      <Search />
                         <Users />
                     </Fragment>
                   )} />
@@ -41,6 +32,7 @@ const App = () => {
             </div>
         </div>
         </Router>
+        </AlertState>
       </GithubState>
     );
   }
