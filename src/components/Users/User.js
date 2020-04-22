@@ -1,24 +1,16 @@
-import React, { Fragment, Component } from 'react';
+import React, { Fragment, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import Repos from '../repos/Repos';
 import Spinner from '../layouts/Spinner';
 import {Link} from 'react-router-dom';
 
-class User extends Component {
-    componentDidMount() {
-        this.props.getUser(this.props.match.params.login);
-        this.props.getUserRepos(this.props.match.params.login);
-    }
+const User = ({ user, loading, getUserRepos, getUser, match, repos}) => {
 
-    static propTypes = {
-        loading: PropTypes.bool,
-        user: PropTypes.object.isRequired,
-        getUser: PropTypes.func.isRequired,
-        getUserRepos: PropTypes.func.isRequired,
-        repos: PropTypes.array.isRequired
-    }
-
-    render() {
+    useEffect(() => {
+        getUser(match.params.login);
+        getUserRepos(match.params.login);
+        //eslint-disable-next-line
+    }, []);
         const {
             name,
             avatar_url,
@@ -33,8 +25,8 @@ class User extends Component {
             public_gists,
             company,
             hireable
-        } = this.props.user;
-        const {loading, repos} = this.props;
+        } = user;
+        
         if (loading) return <Spinner />
 
         return (
@@ -57,7 +49,7 @@ class User extends Component {
                                 <p>{bio}</p>
                             </Fragment>
                         )}
-                        <a href={html_url} className='btn btn-darl my-1'>Visit Github profile</a>
+                        <a href={html_url} className='btn btn-dark my-1'>Visit Github profile</a>
                         <ul>
                             <li>{login && (
                                 <Fragment>
@@ -95,6 +87,12 @@ class User extends Component {
             </Fragment>
         )
     }
-}
 
+User.propTypes = {
+    loading: PropTypes.bool,
+    user: PropTypes.object.isRequired,
+    getUser: PropTypes.func.isRequired,
+    getUserRepos: PropTypes.func.isRequired,
+    repos: PropTypes.array.isRequired
+}
 export default User;
