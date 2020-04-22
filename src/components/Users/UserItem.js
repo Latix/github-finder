@@ -3,7 +3,7 @@ import propTypes from 'prop-types';
 import {Link} from 'react-router-dom';
 import '../../App.css';
 
-const UserItem = ({ user: { login, avatar_url, html_url }}) =>  {
+const UserItem = ({ user: { login, avatar_url }}) =>  {
         return (
            <div className='card text-center'>
                <img src={avatar_url} alt='' className='round-img' style={{ width: '60px', height: '60px'}} />
@@ -14,10 +14,5 @@ const UserItem = ({ user: { login, avatar_url, html_url }}) =>  {
            </div>
         )
     };
-
-    // UserItem.propTypes = {
-    //     user: propTypes.object.isRequired,
-    //     avatar_url: propTypes.object.isRequired,
-    // }
 
 export default UserItem;
