@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import '../App.css';
+import '../../App.css';
 
 const UserItem = ({ user: { login, avatar_url, html_url }}) =>  {
         return (
@@ -14,9 +14,9 @@ const UserItem = ({ user: { login, avatar_url, html_url }}) =>  {
         )
     };
 
-    UserItem.PropTypes = {
-        user: PropTypes.object.isRequired,
-        avatar_url: PropTypes.object.isRequired,
-    }
+    // UserItem.PropTypes = {
+    //     user: PropTypes.object.isRequired,
+    //     avatar_url: PropTypes.object.isRequired,
+    // }
 
 export default UserItem;

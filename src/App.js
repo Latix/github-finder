@@ -7,11 +7,11 @@ class App extends Component {
   componentDidMount() {
 
   }
-  
+
   render() {
     return (
       <div className="App">
-          <NavBar />
+          <NavBar title='Github Finder' icon='fab fa-github'/>
        <div className='container'>
           <Users />
        </div>
